@@ -3,6 +3,7 @@ package com.ds.twophasecommit.constants;
 import java.time.Duration;
 
 public class TwoPhaseCommitConstants {
+    //Configurable values to replicate Failures
 
     public static final int TC_SERVER_PORT = 9000;
     public static final int N1_SERVER_PORT = 9001;
