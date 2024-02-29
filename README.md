@@ -1,4 +1,4 @@
-# Two-Phase Distributed Commit
+# 🌐 Two-Phase Distributed Commit
 
 ## Overview
 
