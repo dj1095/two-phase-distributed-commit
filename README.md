@@ -10,33 +10,29 @@ The Two-Phase Distributed Commit project is an implementation of the Two-Phase C
 
 - **Fault Tolerance:** Robust handling of failures and recoverability to maintain system integrity even in the presence of node failures.
 
-- **Scalability:** Designed for scalability to accommodate a growing number of nodes, making it suitable for large-scale distributed systems.
-
-- **Easy Integration:** Provides a simple and intuitive interface for integrating the Two-Phase Distributed Commit protocol into existing distributed systems.
+- **Scalability:** Can be added more nodes easily to replicate a scenario with a lot of nodes
 
 ## Getting Started
-
-[Include instructions on how to install, configure, and run the project. Also, provide any prerequisites and dependencies.]
+- Need JRE to run the project
 
 ```bash
 # Example commands to get started
-git clone https://github.com/your-username/two-phase-distributed-commit.git
+git clone https://github.com/dj1095/two-phase-distributed-commit.git
 cd two-phase-distributed-commit
 ```
+## Handled Scenarios
+### Node Failure
+- In the event of a node failure during the transaction, the Two-Phase Distributed Commit project gracefully handles the situation:
 
-## Usage
-```code
-# Example usage in Python
-from two_phase_commit import Coordinator, Participant
+- If a participant node fails during the prepare phase, the coordinator detects the failure and aborts the transaction.
 
-# Initialize coordinator and participants
-coordinator = Coordinator("coordinator-host", 5000)
-participant1 = Participant("participant1-host", 6000)
-participant2 = Participant("participant2-host", 7000)
+- If a participant node fails during the commit phase, the coordinator detects the failure and initiates a rollback to maintain consistency.
 
-# Perform distributed transactions
-coordinator.start_transaction()
-coordinator.add_participant(participant1)
-coordinator.add_participant(participant2)
-coordinator.commit()
-```
+### Transaction Coordinator Failure
+- In the rare scenario where the transaction coordinator fails:
+
+- The system is designed to recover from coordinator failures and resume normal operation.
+
+- Participants receive a notification of the failure and take appropriate measures, such as rolling back the transaction.
+
+
